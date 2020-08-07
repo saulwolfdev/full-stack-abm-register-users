@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 // import styles from "./CreateUser.module.scss";
 import axios from "axios";
+import { BsFillTrash2Fill } from "react-icons/bs";
 class CreateUser extends Component {
 			state = {
 			 username:"",
@@ -62,10 +63,11 @@ class CreateUser extends Component {
                 <div className="col-md-8">
                     <ul className="list-group"> {
                         this.state.users.map((user) => {
-                            return <li className="list-group-item list-group-item-action" onDoubleClick={() => this.deleteUser(user._id)}
-                                key={user._id}> {
+                            return <li className="list-group-item list-group-item-action" style={{display:"flex",justifyContent:"space-between"}}
+                                key={user._id}>
+								{
                                 user.username
-                            }</li>
+                            } <span onClick={() => this.deleteUser(user._id)}><BsFillTrash2Fill/></span></li>
                     })
                     } </ul>
                 </div>

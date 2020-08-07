@@ -14,6 +14,7 @@ userController.createUser=async(req,res)=>{
 	await newUser.save();
 	res.json({message:"user new created"})
 	};
+	
 userController.updateUser=async(req,res)=>{
 	const {username}=req.body;
 	await User.findOneAndUpdate({_id:req.params.id},{
@@ -21,6 +22,7 @@ userController.updateUser=async(req,res)=>{
 	});
 	res.json({message: "User Update"});
 };
+
 userController.deleteUser=async(req,res)=>{
 	await User.findByIdAndDelete(req.params.id);
 	res.json({message:"user deleted"})

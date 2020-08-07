@@ -1,5 +1,5 @@
-import React, { Component,Fragment } from 'react'
-import styles from "./CreateNote.module.scss";
+import React, { Component,Fragment } from 'react';
+// import styles from "./CreateNote.module.scss";
 class CreateNote extends Component {
 	constructor(props) {
 		super(props);
@@ -14,3 +14,4 @@ class CreateNote extends Component {
 }
  
 export default CreateNote;
+

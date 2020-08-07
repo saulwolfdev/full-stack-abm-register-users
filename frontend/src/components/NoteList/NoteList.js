@@ -1,5 +1,5 @@
 import React, { Component,Fragment } from 'react'
-import styles from "./NoteList.module.scss";
+// import styles from "./NoteList.module.scss";
 class NoteList extends Component {
 	constructor(props) {
 		super(props);
@@ -9,7 +9,8 @@ class NoteList extends Component {
 		return (
 		<Fragment>
 			<h1>note list</h1>
-		</Fragment>);
+		</Fragment>
+		);
 	}
 }
  

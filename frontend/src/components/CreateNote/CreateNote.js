@@ -8,7 +8,9 @@ class CreateNote extends Component {
 	render() { 
 		return (
 		<Fragment>
-			<h1>CreateNote</h1>
+			<div className="container">
+
+        </div>
 		</Fragment>);
 	}
 }

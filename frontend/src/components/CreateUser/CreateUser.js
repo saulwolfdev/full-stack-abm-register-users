@@ -37,7 +37,8 @@ class CreateUser extends Component {
         }
     }
     render(){
-        return (<div className="container">
+        return (
+		<div className="container">
             <div className="row">
                 <div className="col-md-4">
                     <div className="card">
@@ -72,7 +73,8 @@ class CreateUser extends Component {
                     } </ul>
                 </div>
             </div>
-        </div>);
+        </div>
+		);
     }
 }
 

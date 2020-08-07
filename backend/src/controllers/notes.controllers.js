@@ -1,4 +1,4 @@
-const notesController={}
+const notesController={};
 
 const Note=require("../models/Note");
 
@@ -37,11 +37,11 @@ notesController.updateNote=async(req,res)=>{
 	});
 	
 	res.json({message: "Note Update"});
-}
+};
 notesController.deleteNote=async(req,res)=>{
     const note=await Note.findByIdAndDelete(req.params.id);
 	console.log("this is the ID removed ",note);
 	res.json({message: "Note Delete"});
-}
+};
 
 module.exports=notesController;

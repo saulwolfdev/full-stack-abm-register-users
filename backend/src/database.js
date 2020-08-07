@@ -5,10 +5,11 @@ const URI = process.env.MONGOOSE_URI? process.env.MONGOOSE_URI: 'mongodb://local
 mongoose.connect(URI,{
 	useNewUrlParser:true,
 	useCreateIndex:true,
-	useUnifiedTopology: true
+	useUnifiedTopology: true,
+	useFindAndModify:false
 });
 const connection=mongoose.connection;
 
 connection.once("open",()=>{
 	console.log(`DB is connected ${URI}`);
-})
+});

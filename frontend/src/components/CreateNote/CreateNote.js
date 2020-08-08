@@ -65,6 +65,7 @@ class CreateNote extends Component {
       } catch (error) {
         console.log(error.data);
         this.setState({ message: true });
+
         setTimeout(() => this.setState({ message: false }), 1000);
       }
     }

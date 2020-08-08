@@ -17,13 +17,16 @@ class Navigation extends Component {
 					</Link>
 						<div className="collapse navbar-collapse" id="navbarNav">
 							<ul className="navbar-nav">
-								<li className="nav-item active">
-									<Link className="navbar-brand" to="/create">
+							<li className="nav-item active">
+                                <Link to="/" className="nav-link">Note LIST</Link>
+                            </li>
+								<li className="nav-item">
+									<Link className="nav-link" to="/create">
 										create note
 									</Link>
 								</li>
 								<li className="nav-item">
-									<Link className="navbar-brand" to="/user">
+									<Link className="nav-link" to="/user">
 										create user
 								</Link>
 								</li>

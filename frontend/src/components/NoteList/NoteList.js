@@ -44,6 +44,7 @@ class NoteList extends Component {
                   </div>
                   <div className="card-body">
                     <p>{note.content}</p>
+					  <p>{note.cuit}</p>
                     <p>Author: {note.author}</p>
                     <p>{format(note.createdAt)}</p>
                   </div>

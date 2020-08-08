@@ -14,7 +14,7 @@ class CreateNote extends Component {
       cuit: "",
       date: new Date(),
       editingNote: false,
-    //   message: false,
+      message: false,
       _id: "",
     };
   }
@@ -26,21 +26,19 @@ class CreateNote extends Component {
       userSelected: res.data[0].username,
     });
     if (this.props.match.params.id) {
-	//   this.setState({
-	// 	  message:true
-	//   })
-      const res = await axios.get("http://localhost:4000/api/notes/" + this.props.match.params.id);
-	  console.log("data res==>>>",res.data)
-		this.setState({
-            title: res.data.title,
-            content: res.data.content,
-            cuit: res.data.cuit,
-            date: new Date(res.data.date),
-            userSelected: res.data.author,
-			//  message:false,
-            editingNote: true,
-            _id: this.props.match.params.id,
-          });
+      const res = await axios.get(
+        "http://localhost:4000/api/notes/" + this.props.match.params.id
+      );
+      console.log("data res==>>>", res.data);
+      this.setState({
+        title: res.data.title,
+        content: res.data.content,
+        cuit: res.data.cuit,
+        date: new Date(res.data.date),
+        userSelected: res.data.author,
+        editingNote: true,
+        _id: this.props.match.params.id,
+      });
     }
   }
   onSubmit = async (e) => {
@@ -58,13 +56,17 @@ class CreateNote extends Component {
         newNote
       );
     } else {
-		try {
-		const res = await axios.post("http://localhost:4000/api/notes", newNote);
-		console.log("nota creada OK", res);
-		} catch (error) {
-			console.log("ERROR BACK",error)
-		}
-		
+      try {
+        const res = await axios.post(
+          "http://localhost:4000/api/notes",
+          newNote
+        );
+        console.log("nota creada OK", res);
+      } catch (error) {
+        console.log(error.data);
+        this.setState({ message: true });
+        setTimeout(() => this.setState({ message: false }), 1000);
+      }
     }
     // window.location = "/";
   };
@@ -83,7 +85,7 @@ class CreateNote extends Component {
           <div className="col-md-6 offset-md-3">
             <div className="card card-body">
               <h4>CREAR PROVEEDOR</h4>
-			  {/* {(this.state.message)?<h3>error</h3>:null} */}
+              {this.state.message ? <h3>EL CUIT YA ESTA INSCRIPTO</h3> : null}
               <form onSubmit={this.onSubmit}>
                 <div className="form-group">
                   <select

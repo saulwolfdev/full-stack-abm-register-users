@@ -23,7 +23,7 @@ notesController.createNote=async(req,res,next)=>{
 	    res.json({message:"Note Saved"});
 	}).catch((error) => {
 	if(error.code === 11000)
-		res.status(403).json({
+		    res.status(403).json({
 			status: 403,
 			statusCode: 403,
 			name: 'DuplicateError',

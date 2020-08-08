@@ -62,14 +62,18 @@ class CreateNote extends Component {
           newNote
         );
         console.log("nota creada OK", res);
+		window.location = "/";
       } catch (error) {
-        console.log(error.data);
+		  if(error.response.data.name === "DuplicateError"){
+			//   console.log(error.response.data.name);
         this.setState({ message: true });
-
         setTimeout(() => this.setState({ message: false }), 1000);
+		  }
+		  else throw error;
+        
       }
     }
-    // window.location = "/";
+    
   };
   onInputChange = (e) => {
     this.setState({

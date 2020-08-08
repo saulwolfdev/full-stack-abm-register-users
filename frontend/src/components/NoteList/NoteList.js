@@ -2,6 +2,7 @@ import React, { Component,Fragment } from "react"
 import axios from "axios";
 import {format} from "timeago.js";
 import { Link } from "react-router-dom";
+import { BsPencil } from "react-icons/bs";
 // import styles from "./NoteList.module.scss";
 class NoteList extends Component {
 	constructor(props) {
@@ -36,11 +37,7 @@ async componentDidMount(){
                             <div className="card">
                                 <div className="card-header d-flex justify-content-between">
                                     <h5>{note.title}</h5>
-									{/* <Link to={"/edit/" + note._id} className="btn btn-secondary">
-                                        <i className="material-icons">
-                                            border_color</i>
-                                    </Link> */}
-									<Link to={"/edit/" + note._id}> link
+									<Link to={"/edit/" + note._id} className="btn btn-secondary"> <BsPencil/>
 									</Link>
                                 </div>
                                 <div className="card-body">

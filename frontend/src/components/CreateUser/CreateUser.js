@@ -46,7 +46,7 @@ class CreateUser extends Component {
                             <form onSubmit={this.onSubmit}>
                                 <div className="form-group">
                                     <label>
-                                       CREAR UN USUARIO
+                                       PROVEEDOR
                                     </label>
 									<input
                                     className="form-control"

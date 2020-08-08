@@ -6,6 +6,13 @@ const noteSchema=new Schema({
 		type:String,
 		required:true,
 	},
+	cuit:{
+		type:Number,
+		unique:true,
+		trim:true,
+		index:true,
+		required:true,
+	},
 	author:String,
 	date:{
 		type:Date,

@@ -11,8 +11,10 @@ class CreateNote extends Component {
       userSelected: "",
       title: "",
       content: "",
+      cuit: "",
       date: new Date(),
       editingNote: false,
+    //   message: false,
       _id: "",
     };
   }
@@ -24,18 +26,21 @@ class CreateNote extends Component {
       userSelected: res.data[0].username,
     });
     if (this.props.match.params.id) {
-      const res = await axios.get(
-        "http://localhost:4000/api/notes/" + this.props.match.params.id
-      );
-      // console.log(res)
-      this.setState({
-        title: res.data.title,
-        content: res.data.content,
-        date: new Date(res.data.date),
-        userSelected: res.data.author,
-        editingNote: true,
-        _id: this.props.match.params.id,
-      });
+	//   this.setState({
+	// 	  message:true
+	//   })
+      const res = await axios.get("http://localhost:4000/api/notes/" + this.props.match.params.id);
+	  console.log("data res==>>>",res.data)
+		this.setState({
+            title: res.data.title,
+            content: res.data.content,
+            cuit: res.data.cuit,
+            date: new Date(res.data.date),
+            userSelected: res.data.author,
+			//  message:false,
+            editingNote: true,
+            _id: this.props.match.params.id,
+          });
     }
   }
   onSubmit = async (e) => {
@@ -44,6 +49,7 @@ class CreateNote extends Component {
       title: this.state.title,
       content: this.state.content,
       date: this.state.date,
+      cuit: this.state.cuit,
       author: this.state.userSelected,
     };
     if (this.state.editingNote) {
@@ -52,15 +58,17 @@ class CreateNote extends Component {
         newNote
       );
     } else {
-      const res = await axios.post("http://localhost:4000/api/notes", newNote);
-      console.log("note created", res);
+		try {
+		const res = await axios.post("http://localhost:4000/api/notes", newNote);
+		console.log("nota creada OK", res);
+		} catch (error) {
+			console.log("ERROR BACK",error)
+		}
+		
     }
-    window.location = "/";
+    // window.location = "/";
   };
   onInputChange = (e) => {
-    //  this.setState({
-    // 	 userSelected:e.target.value
-    //  })
     this.setState({
       [e.target.name]: e.target.value,
     });
@@ -75,6 +83,7 @@ class CreateNote extends Component {
           <div className="col-md-6 offset-md-3">
             <div className="card card-body">
               <h4>CREAR PROVEEDOR</h4>
+			  {/* {(this.state.message)?<h3>error</h3>:null} */}
               <form onSubmit={this.onSubmit}>
                 <div className="form-group">
                   <select
@@ -85,7 +94,7 @@ class CreateNote extends Component {
                   >
                     {this.state.users.map((user) => {
                       return (
-                        <option key={user} value={user}>
+                        <option key={user} value={user} required>
                           {user}
                         </option>
                       );
@@ -104,6 +113,17 @@ class CreateNote extends Component {
                   />
                 </div>
                 <div className="form-group">
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Cuit"
+                    onChange={this.onInputChange}
+                    name="cuit"
+                    value={this.state.cuit}
+                    required
+                  />
+                </div>
+                <div className="form-group">
                   <textarea
                     type="text"
                     className="form-control"
@@ -111,6 +131,7 @@ class CreateNote extends Component {
                     name="content"
                     value={this.state.content}
                     onChange={this.onInputChange}
+                    required
                   ></textarea>
                 </div>
 
@@ -121,7 +142,7 @@ class CreateNote extends Component {
                     selected={this.state.date}
                   />
                 </div>
-                <button className="btn btn-primary">Save</button>
+                <input type="submit" className="btn btn-primary" />
               </form>
             </div>
           </div>

@@ -46,7 +46,7 @@ class CreateUser extends Component {
                             <form onSubmit={this.onSubmit}>
                                 <div className="form-group">
                                     <label>
-                                       PROVEEDOR
+                                      INGRESE RESPONSABLE INSCRIPTO
                                     </label>
 									<input
                                     className="form-control"
@@ -55,7 +55,7 @@ class CreateUser extends Component {
                                     onChange={this.onChangeUsername}
                                 />
                                 </div>
-								<button type="submit" className="btn btn-primary">save</button>
+								<input type="submit" className="btn btn-primary" value="guardar"/>
                             </form>
                         </div>
                     </div>

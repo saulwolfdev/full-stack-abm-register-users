@@ -9,9 +9,12 @@ class CreateNote extends Component {
     this.state = {
       users: [],
       userSelected: "",
-      title: "",
+      name: "",
+      email: "",
       content: "",
       cuit: "",
+      direction: "",
+      phone: "",
       date: new Date(),
       editingNote: false,
       message: false,
@@ -31,11 +34,14 @@ class CreateNote extends Component {
       );
       console.log("data res==>>>", res.data);
       this.setState({
-        title: res.data.title,
+        name: res.data.name,
+        email: res.data.email,
         content: res.data.content,
+        direction: res.data.direction,
+        phone: res.data.phone,
         cuit: res.data.cuit,
         date: new Date(res.data.date),
-        userSelected: res.data.author,
+        userSelected: res.data.registeredManager,
         editingNote: true,
         _id: this.props.match.params.id,
       });
@@ -44,11 +50,14 @@ class CreateNote extends Component {
   onSubmit = async (e) => {
     e.preventDefault();
     const newNote = {
-      title: this.state.title,
+      name: this.state.name,
+      email: this.state.email,
+      direction: this.state.direction,
+      phone: this.state.phone,
       content: this.state.content,
       date: this.state.date,
       cuit: this.state.cuit,
-      author: this.state.userSelected,
+      registeredManager: this.state.userSelected,
     };
     if (this.state.editingNote) {
       await axios.put(
@@ -62,18 +71,15 @@ class CreateNote extends Component {
           newNote
         );
         console.log("nota creada OK", res);
-		window.location = "/";
+        window.location = "/";
       } catch (error) {
-		  if(error.response.data.name === "DuplicateError"){
-			//   console.log(error.response.data.name);
-        this.setState({ message: true });
-        setTimeout(() => this.setState({ message: false }), 1000);
-		  }
-		  else throw error;
-        
+        if (error.response.data.name === "DuplicateError") {
+          //   console.log(error.response.data.name);
+          this.setState({ message: true });
+          setTimeout(() => this.setState({ message: false }), 1000);
+        } else throw error;
       }
     }
-    
   };
   onInputChange = (e) => {
     this.setState({
@@ -89,7 +95,7 @@ class CreateNote extends Component {
         <div className="container">
           <div className="col-md-6 offset-md-3">
             <div className="card card-body">
-              <h4>CREAR PROVEEDOR</h4>
+              <h4>INGRESAR PROVEEDOR</h4>
               {this.state.message ? <h3>EL CUIT YA ESTA INSCRIPTO</h3> : null}
               <form onSubmit={this.onSubmit}>
                 <div className="form-group">
@@ -112,10 +118,43 @@ class CreateNote extends Component {
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="Title"
+                    placeholder="Nombre"
                     onChange={this.onInputChange}
-                    name="title"
-                    value={this.state.title}
+                    name="name"
+                    value={this.state.name}
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <input
+                    type="email"
+                    className="form-control"
+                    placeholder="Correo"
+                    onChange={this.onInputChange}
+                    name="email"
+                    value={this.state.email}
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Dirección"
+                    onChange={this.onInputChange}
+                    name="direction"
+                    value={this.state.direction}
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Telefono"
+                    onChange={this.onInputChange}
+                    name="phone"
+                    value={this.state.phone}
                     required
                   />
                 </div>
@@ -134,7 +173,7 @@ class CreateNote extends Component {
                   <textarea
                     type="text"
                     className="form-control"
-                    placeholder="Content"
+                    placeholder="Información adicional"
                     name="content"
                     value={this.state.content}
                     onChange={this.onInputChange}
@@ -149,7 +188,11 @@ class CreateNote extends Component {
                     selected={this.state.date}
                   />
                 </div>
-                <input type="submit" className="btn btn-primary" />
+                <input
+                  type="submit"
+                  className="btn btn-primary"
+                  value="crear proveedor"
+                />
               </form>
             </div>
           </div>

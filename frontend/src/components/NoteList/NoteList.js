@@ -33,28 +33,27 @@ class NoteList extends Component {
             {this.state.notes.map((note) => (
               <div className="col-md-4 p-2" key={note._id}>
                 <div className="card">
-                  <div className="card-header d-flex justify-content-between">
-                    <h5>{note.title}</h5>
-                    <Link
-                      to={"/edit/" + note._id}
-                      className="btn btn-secondary"
-                    >
-                      <BsPencil />
+                  <div className="card-header d-flex align-items-center justify-content-between">
+					<h5>{note.name}</h5>
+                    <Link to={"/edit/" + note._id} className="btn btn-secondary">
+                     editar <BsPencil />
                     </Link>
                   </div>
                   <div className="card-body">
+					<p>{note.direction}</p>
+					<p>{note.phone}</p>
+					<p>{note.cuit}</p>
                     <p>{note.content}</p>
-					  <p>{note.cuit}</p>
-                    <p>Author: {note.author}</p>
+                    <p>{note.registeredManager}</p>
                     <p>{format(note.createdAt)}</p>
                   </div>
                   <div className="card-footer">
-                    <button
+                    <input
+					type="submit"
                       className="btn btn-danger"
+					  value="eliminar proveedor"
                       onClick={() => this.deleteNote(note._id)}
-                    >
-                      Delete
-                    </button>
+                    />
                   </div>
                 </div>
               </div>

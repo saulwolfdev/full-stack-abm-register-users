@@ -12,23 +12,23 @@ class Navigation extends Component {
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className={"container"}>
           <Link className="navbar-brand" to="/">
-            home
+            INICIO
           </Link>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item active">
                 <Link to="/" className="nav-link">
-                  Note LIST
+                  LISTADO 
                 </Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/create">
-                  create note
+                  PROVEEDORES
                 </Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/user">
-                  create user
+                 INSCRIPTOS
                 </Link>
               </li>
             </ul>

@@ -9,13 +9,16 @@ notesController.getNotes= async (req,res)=>{
 };
 notesController.createNote=async(req,res,next)=>{
 	console.log(req.body);
-	const {title,content,date,author,cuit}= req.body;
+	const {name,email,direction,phone,registeredManager,content,date,cuit}= req.body;
 	const newNote=new Note({
-		title,
+		name,
+		email,
+		direction,
+		phone,
+		registeredManager,
 		content,
 		date,
 		cuit,
-		author
 	});
 	await newNote.save().then((noteSaved)=>{
 		console.log(`created a ${newNote}`);
@@ -42,13 +45,16 @@ notesController.getNote=async(req,res)=>{
 };
 
 notesController.updateNote=async(req,res)=>{
-	const {title,content,date,author,cuit}=req.body;
+	const {name,email,direction,phone,registeredManager,content,date,cuit}=req.body;
 	await Note.findOneAndUpdate({_id:req.params.id},{
-		title,
+		name,
+		email,
+		direction,
+		phone,
+		registeredManager,
 		content,
 		date,
 		cuit,
-		author
 	});
 	
 	res.json({message: "Note Update"});

@@ -1,11 +1,10 @@
 const {Schema,model}=require("mongoose");
 
 const noteSchema=new Schema({
-	title:String,
-	content:{
-		type:String,
-		required:true,
-	},
+	name:String,
+	email:String,
+	direction:String,
+	phone:String,
 	cuit:{
 		type:Number,
 		unique:true,
@@ -13,7 +12,11 @@ const noteSchema=new Schema({
 		index:true,
 		required:true,
 	},
-	author:String,
+	content:{
+		type:String,
+		required:true,
+	},
+	registeredManager:String,
 	date:{
 		type:Date,
 		default:Date.now

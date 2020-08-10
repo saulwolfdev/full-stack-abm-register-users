@@ -6,7 +6,7 @@ Instalar node, desde la pagina oficial
 Instalar node, desde la pagina oficial
 ## 3) CLONAR REPOSITORIO
 clonar repositirio de gitHub
-## 4) ABRIR CON CVCODE
+## 4) ABRIR CON VISUAL STUDIO CODE
 Ir  la carpeta donde se clone y pararse el proyecto
 ## 5) IR LA CARPETA BACKEND
 click derecho sobre la carpeta en vscode y seleccionar "terminar integrada

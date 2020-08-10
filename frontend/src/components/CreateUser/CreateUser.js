@@ -15,7 +15,7 @@ class CreateUser extends Component {
         this.setState({
 			users: res.data
 			});
-			console.log(res);
+			// console.log(res);
 	};
     onChangeUsername =(e)=>{
         this.setState({username: e.target.value});

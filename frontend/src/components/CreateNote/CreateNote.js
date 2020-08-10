@@ -99,22 +99,6 @@ class CreateNote extends Component {
               {this.state.message ? <h3>EL CUIT YA ESTA INSCRIPTO</h3> : null}
               <form onSubmit={this.onSubmit}>
                 <div className="form-group">
-                  <select
-                    className="form-control"
-                    name="userSelected"
-                    value={this.state.userSelected}
-                    onChange={this.onInputChange}
-                  >
-                    {this.state.users.map((user) => {
-                      return (
-                        <option key={user} value={user} required>
-                          {user}
-                        </option>
-                      );
-                    })}
-                  </select>
-                </div>
-                <div className="form-group">
                   <input
                     type="text"
                     className="form-control"
@@ -187,6 +171,23 @@ class CreateNote extends Component {
                     onChange={this.onDateChange}
                     selected={this.state.date}
                   />
+                </div>
+				<div className="form-group">
+				<label>Seleccione responsable inscripto</label>
+                  <select
+                    className="form-control"
+                    name="userSelected"
+                    value={this.state.userSelected}
+                    onChange={this.onInputChange}
+                  >
+                    {this.state.users.map((user) => {
+                      return (
+                        <option key={user} value={user} required>
+                          {user}
+                        </option>
+                      );
+                    })}
+                  </select>
                 </div>
                 <input
                   type="submit"

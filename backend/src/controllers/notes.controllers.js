@@ -21,7 +21,7 @@ notesController.createNote=async(req,res,next)=>{
 		cuit,
 	});
 	await newNote.save().then((noteSaved)=>{
-		console.log(`created a ${newNote}`);
+		// console.log(`created a ${newNote}`);
 		 res.status(200)
 	    res.json({message:"Note Saved"});
 	}).catch((error) => {
@@ -40,7 +40,7 @@ notesController.createNote=async(req,res,next)=>{
 };
 notesController.getNote=async(req,res)=>{
     const note=await Note.findById(req.params.id);
-	console.log("this is the ID ",note);
+	// console.log("this is the ID ",note);
 	res.json(note)
 };
 
@@ -61,7 +61,7 @@ notesController.updateNote=async(req,res)=>{
 };
 notesController.deleteNote=async(req,res)=>{
     const note=await Note.findByIdAndDelete(req.params.id);
-	console.log("this is the ID removed ",note);
+	// console.log("this is the ID removed ",note);
 	res.json({message: "Note Delete"});
 };
 

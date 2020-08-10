@@ -8,7 +8,7 @@ Instalar node, desde la pagina oficial
 clonar repositirio de gitHub
 ## 4) ABRIR CON VISUAL STUDIO CODE
 Ir  la carpeta donde se clone y pararse el proyecto
-## 5) IR LA CARPETA BACKEND
+## 5) IR LA CARPETA CLONADA
 click derecho sobre la carpeta en vscode y seleccionar "terminar integrada
 ## 6) IR LA CARPETA BACKEND
  ingresar sobre la consola este comando instalara todas las dependencias necesarias
